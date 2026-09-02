@@ -1,0 +1,323 @@
+[gd_scene format=3 uid="uid://c30caensqj5bp"]
+
+[ext_resource type="Script" uid="uid://dwscv0k5gqkge" path="res://src/battle.gd" id="1_pe5li"]
+[ext_resource type="Texture2D" uid="uid://bajrls8v4erk3" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_00_delay-0.05s.png" id="1_semn2"]
+[ext_resource type="Texture2D" uid="uid://cyxn4amysy707" path="res://assets/Battle System/UI Elements/BattleStation4.png" id="2_h4qsw"]
+[ext_resource type="Texture2D" uid="uid://cd73ath84hia1" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_01_delay-0.05s.png" id="2_tflw0"]
+[ext_resource type="Texture2D" uid="uid://dvh4a8fvwc4vi" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_02_delay-0.05s.png" id="3_4lbr0"]
+[ext_resource type="Texture2D" uid="uid://dl24noq5q2qdi" path="res://assets/Battle System/Units Images/Ragnvaldr Sprites/frame_0_delay-0.3s.png" id="3_d4yhw"]
+[ext_resource type="Texture2D" uid="uid://y733qmbnj0kj" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_03_delay-0.05s.png" id="4_bnxvp"]
+[ext_resource type="Texture2D" uid="uid://b5i430riqu856" path="res://assets/Battle System/Units Images/Ragnvaldr Sprites/frame_1_delay-0.3s.png" id="4_muv5k"]
+[ext_resource type="Texture2D" uid="uid://b63r8tmv380o1" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_04_delay-0.05s.png" id="5_68t43"]
+[ext_resource type="Texture2D" uid="uid://dgk7bhjhdj30i" path="res://assets/Battle System/Units Images/Ragnvaldr Sprites/frame_2_delay-0.3s.png" id="5_jk78t"]
+[ext_resource type="Texture2D" uid="uid://dr7s1bxf3nbmb" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_05_delay-0.05s.png" id="6_pe5li"]
+[ext_resource type="Texture2D" uid="uid://pie6ihydam2n" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_06_delay-0.05s.png" id="7_m2as0"]
+[ext_resource type="Texture2D" uid="uid://cytkltga4mql8" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_07_delay-0.05s.png" id="8_sx2rk"]
+[ext_resource type="Texture2D" uid="uid://cunctorhxyqs1" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_08_delay-0.05s.png" id="9_rkyo3"]
+[ext_resource type="Texture2D" uid="uid://c4fjj3f1jc80u" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_09_delay-0.05s.png" id="10_yvdpt"]
+[ext_resource type="Texture2D" uid="uid://chfku7fq0syow" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_10_delay-0.05s.png" id="11_38wtd"]
+[ext_resource type="Texture2D" uid="uid://cajqfyjids6vj" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_11_delay-0.05s.png" id="12_yf2j1"]
+[ext_resource type="Texture2D" uid="uid://bqjbdclwf0l1k" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_12_delay-0.05s.png" id="13_g22t5"]
+[ext_resource type="Texture2D" uid="uid://cmwl3dbdqdlkm" path="res://assets/Battle System/UI Elements/healthbar.png" id="18_5s16i"]
+[ext_resource type="Texture2D" uid="uid://df4rdr16dvga5" path="res://assets/Battle System/UI Elements/healthRed.png" id="19_bnxvp"]
+[ext_resource type="Texture2D" uid="uid://bf6lsy461ckws" path="res://assets/Battle System/UI Elements/staminaYellow.png" id="20_68t43"]
+[ext_resource type="Texture2D" uid="uid://brp565lk3rwwk" path="res://assets/Battle System/UI Elements/miasmaPurple.png" id="21_pe5li"]
+[ext_resource type="FontFile" uid="uid://be3b87kjdjcb3" path="res://assets/Battle System/Fonts/LiberationSans.ttf" id="22_68t43"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5o88q"]
+load_path = "res://.godot/imported/600px-Dungeon_background.png-3e1e57b17944a25be6c10f7f207b0aca.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w852e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_semn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tflw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4lbr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bnxvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_68t43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pe5li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m2as0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sx2rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rkyo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yvdpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_38wtd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yf2j1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_g22t5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ihvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d4yhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_muv5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jk78t")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ihvq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7862338, 0.78576505, 0.8482084, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68t43"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w852e"]
+bg_color = Color(0.6, 0.6, 0.6, 0.94509804)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2as0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sx2rk"]
+
+[node name="Battle" type="Control" unique_id=2022384558]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 4.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pe5li")
+
+[node name="Background" type="TextureRect" parent="." unique_id=872179746]
+layout_mode = 0
+offset_right = 830.0
+offset_bottom = 643.0
+texture = SubResource("CompressedTexture2D_5o88q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Motley" type="AnimatedSprite2D" parent="." unique_id=1562489150]
+position = Vector2(429.99997, 260)
+scale = Vector2(0.335, 0.335)
+sprite_frames = SubResource("SpriteFrames_w852e")
+autoplay = "default"
+frame = 8
+frame_progress = 0.053568117
+
+[node name="battleStation" type="Sprite2D" parent="." unique_id=752307877]
+position = Vector2(194.00003, 545.00006)
+scale = Vector2(0.120000005, 0.120000005)
+texture = ExtResource("2_h4qsw")
+
+[node name="Abel" type="AnimatedSprite2D" parent="battleStation" unique_id=460590578]
+position = Vector2(16.666466, -666.66724)
+scale = Vector2(6.125, 6.125)
+sprite_frames = SubResource("SpriteFrames_1ihvq")
+autoplay = "default"
+frame = 2
+frame_progress = 0.2559446
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1426504579]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 522.0
+offset_right = 1051.0
+offset_bottom = 728.0
+scale = Vector2(0.52, 0.52)
+theme_override_constants/separation = 7
+
+[node name="HealthBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=117459374]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("18_5s16i")
+texture_progress = ExtResource("19_bnxvp")
+texture_progress_offset = Vector2(4.505, 5.4)
+
+[node name="StaminaBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=1992749794]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("18_5s16i")
+texture_progress = ExtResource("20_68t43")
+texture_progress_offset = Vector2(3.895, 5.265)
+
+[node name="MiasmaBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=429940155]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("18_5s16i")
+texture_progress = ExtResource("21_pe5li")
+texture_progress_offset = Vector2(4.865, 5.93)
+
+[node name="PlayerPanel" type="Panel" parent="." unique_id=1608384272]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 522.00006
+offset_right = 533.56
+offset_bottom = 628.56506
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ihvq")
+
+[node name="Actions" type="Control" parent="PlayerPanel" unique_id=395816808]
+anchors_preset = 0
+offset_right = 513.355
+offset_bottom = 107.0
+
+[node name="Attack" type="Button" parent="PlayerPanel/Actions" unique_id=1425911288]
+layout_mode = 1
+offset_left = 68.54
+offset_top = 20.255
+offset_right = 136.54001
+offset_bottom = 45.255016
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Attack"
+
+[node name="Stance" type="Button" parent="PlayerPanel/Actions" unique_id=137267757]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.23499
+offset_top = 20.73
+offset_right = -61.234985
+offset_bottom = 45.730015
+grow_horizontal = 0
+scale = Vector2(1.0030259, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Stance"
+
+[node name="Items" type="Button" parent="PlayerPanel/Actions" unique_id=57158694]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 76.26
+offset_top = -47.965
+offset_right = 130.26035
+offset_bottom = -22.964996
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Items"
+
+[node name="Run" type="Button" parent="PlayerPanel/Actions" unique_id=1593799004]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -121.13498
+offset_top = -52.925
+offset_right = -73.13498
+offset_bottom = -19.925003
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.001692, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m2as0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Run"
+
+[node name="Textbox" type="Panel" parent="." unique_id=2034325567]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 522.00006
+offset_right = 533.56
+offset_bottom = 628.56506
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ihvq")
+
+[node name="Ticker" type="Label" parent="Textbox" unique_id=972138044]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.559998
+offset_top = -23.565063
+offset_right = 1.3800049
+offset_bottom = -0.5650635
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sx2rk")
+text = ">"
+
+[node name="MarginContainer" type="MarginContainer" parent="Textbox" unique_id=1055418156]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Label" type="Label" parent="Textbox/MarginContainer" unique_id=712333334]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sx2rk")
+text = "Motley taunts Abel...."

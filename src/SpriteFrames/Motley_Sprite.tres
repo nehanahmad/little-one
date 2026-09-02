@@ -1,0 +1,62 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bhg0vsc0rec70"]
+
+[ext_resource type="Texture2D" uid="uid://bajrls8v4erk3" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_00_delay-0.05s.png" id="1_jypi5"]
+[ext_resource type="Texture2D" uid="uid://cd73ath84hia1" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_01_delay-0.05s.png" id="2_jbts4"]
+[ext_resource type="Texture2D" uid="uid://dvh4a8fvwc4vi" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_02_delay-0.05s.png" id="3_qyfvv"]
+[ext_resource type="Texture2D" uid="uid://y733qmbnj0kj" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_03_delay-0.05s.png" id="4_22u0j"]
+[ext_resource type="Texture2D" uid="uid://b63r8tmv380o1" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_04_delay-0.05s.png" id="5_8vqdl"]
+[ext_resource type="Texture2D" uid="uid://dr7s1bxf3nbmb" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_05_delay-0.05s.png" id="6_4akhu"]
+[ext_resource type="Texture2D" uid="uid://pie6ihydam2n" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_06_delay-0.05s.png" id="7_v38eh"]
+[ext_resource type="Texture2D" uid="uid://cytkltga4mql8" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_07_delay-0.05s.png" id="8_3p284"]
+[ext_resource type="Texture2D" uid="uid://cunctorhxyqs1" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_08_delay-0.05s.png" id="9_c8tew"]
+[ext_resource type="Texture2D" uid="uid://c4fjj3f1jc80u" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_09_delay-0.05s.png" id="10_2kc41"]
+[ext_resource type="Texture2D" uid="uid://chfku7fq0syow" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_10_delay-0.05s.png" id="11_4xxxo"]
+[ext_resource type="Texture2D" uid="uid://cajqfyjids6vj" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_11_delay-0.05s.png" id="12_umngi"]
+[ext_resource type="Texture2D" uid="uid://bqjbdclwf0l1k" path="res://assets/Battle System/Units Images/Jevil Sprites/frame_12_delay-0.05s.png" id="13_epwcp"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jypi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jbts4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qyfvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_22u0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8vqdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4akhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v38eh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3p284")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_c8tew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2kc41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4xxxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_umngi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_epwcp")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 12.0
+}]

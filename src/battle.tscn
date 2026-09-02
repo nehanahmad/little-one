@@ -1,0 +1,576 @@
+[gd_scene format=3 uid="uid://c30caensqj5bp"]
+
+[ext_resource type="Script" uid="uid://dwscv0k5gqkge" path="res://src/battle.gd" id="1_pe5li"]
+[ext_resource type="Resource" uid="uid://bvi5q05thpkwm" path="res://src/Motley.tres" id="2_8t32a"]
+[ext_resource type="Texture2D" uid="uid://cyxn4amysy707" path="res://assets/Battle System/UI Elements/BattleStation4.png" id="2_h4qsw"]
+[ext_resource type="PackedScene" uid="uid://d35ayakbbjyeq" path="res://src/enemy.tscn" id="3_ipplu"]
+[ext_resource type="Script" uid="uid://cnsxx7hexfa4l" path="res://src/stance_data.gd" id="3_semn2"]
+[ext_resource type="SpriteFrames" uid="uid://cbnqr6twb63na" path="res://src/SpriteFrames/Abel_Sprite_Frames.tres" id="4_lkv6f"]
+[ext_resource type="Resource" uid="uid://b2gwl4ce5feqy" path="res://src/StanceData/idle.tres" id="4_tflw0"]
+[ext_resource type="Resource" uid="uid://bo1exs2jejkyi" path="res://src/StanceData/Fool's Guard.tres" id="5_4lbr0"]
+[ext_resource type="Resource" uid="uid://bd8txgfbcmuui" path="res://src/StanceData/Plow Short.tres" id="6_bnxvp"]
+[ext_resource type="Resource" uid="uid://b4017nphmqsx3" path="res://src/StanceData/Prism Stance.tres" id="7_68t43"]
+[ext_resource type="Resource" uid="uid://2s0si6s6ywtx" path="res://src/StanceData/Roof Stance.tres" id="8_pe5li"]
+[ext_resource type="Texture2D" uid="uid://cmwl3dbdqdlkm" path="res://assets/Battle System/UI Elements/healthbar.png" id="18_5s16i"]
+[ext_resource type="Texture2D" uid="uid://df4rdr16dvga5" path="res://assets/Battle System/UI Elements/healthRed.png" id="19_bnxvp"]
+[ext_resource type="Texture2D" uid="uid://cvs0h0kruapm0" path="res://assets/Battle System/UI Elements/foolsGuard.png" id="19_sx2rk"]
+[ext_resource type="FontFile" uid="uid://boil68y8hydi8" path="res://assets/Battle System/Fonts/CloisterBlack.ttf" id="19_tflw0"]
+[ext_resource type="Texture2D" uid="uid://bf6lsy461ckws" path="res://assets/Battle System/UI Elements/staminaYellow.png" id="20_68t43"]
+[ext_resource type="FontFile" uid="uid://dtsv83iwk8c2c" path="res://assets/Battle System/Fonts/PixelifySans-VariableFont_wght 1.ttf" id="20_rkyo3"]
+[ext_resource type="Texture2D" uid="uid://brp565lk3rwwk" path="res://assets/Battle System/UI Elements/miasmaPurple.png" id="21_pe5li"]
+[ext_resource type="FontFile" uid="uid://be3b87kjdjcb3" path="res://assets/Battle System/Fonts/LiberationSans.ttf" id="22_68t43"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5o88q"]
+load_path = "res://.godot/imported/600px-Dungeon_background.png-3e1e57b17944a25be6c10f7f207b0aca.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ihvq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7862338, 0.78576505, 0.8482084, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68t43"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w852e"]
+bg_color = Color(0.6, 0.6, 0.6, 0.94509804)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2as0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sx2rk"]
+
+[node name="Battle" type="Control" unique_id=2022384558]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 4.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pe5li")
+enemy = ExtResource("2_8t32a")
+stance_data_list = Array[ExtResource("3_semn2")]([ExtResource("4_tflw0"), ExtResource("5_4lbr0"), ExtResource("6_bnxvp"), ExtResource("7_68t43"), ExtResource("8_pe5li")])
+
+[node name="Background" type="TextureRect" parent="." unique_id=872179746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_5o88q")
+expand_mode = 1
+
+[node name="Enemy" parent="." unique_id=202543309 instance=ExtResource("3_ipplu")]
+enemy_data = ExtResource("2_8t32a")
+
+[node name="battleStation" type="Sprite2D" parent="." unique_id=752307877]
+position = Vector2(393.065, 910.75)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("2_h4qsw")
+
+[node name="Abel" type="AnimatedSprite2D" parent="battleStation" unique_id=460590578]
+position = Vector2(16.666466, -666.66724)
+scale = Vector2(6.125, 6.125)
+sprite_frames = ExtResource("4_lkv6f")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8827232
+
+[node name="MeterBox" type="VBoxContainer" parent="." unique_id=1426504579]
+layout_mode = 0
+offset_left = 1394.67
+offset_top = 761.155
+offset_right = 1906.6707
+offset_bottom = 1064.1554
+theme_override_constants/separation = 7
+
+[node name="StanceStat" type="HBoxContainer" parent="MeterBox" unique_id=754610201]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="StanceIcon" type="TextureRect" parent="MeterBox/StanceStat" unique_id=2094869249]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_sx2rk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StanceLabel" type="Label" parent="MeterBox/StanceStat" unique_id=676663556]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("20_rkyo3")
+theme_override_font_sizes/font_size = 48
+text = "Fool's Guard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="MeterBox" unique_id=117459374]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("18_5s16i")
+texture_progress = ExtResource("19_bnxvp")
+texture_progress_offset = Vector2(4.505, 5.4)
+
+[node name="StaminaBar" type="TextureProgressBar" parent="MeterBox" unique_id=1992749794]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("18_5s16i")
+texture_progress = ExtResource("20_68t43")
+texture_progress_offset = Vector2(3.895, 5.265)
+
+[node name="MiasmaBar" type="TextureProgressBar" parent="MeterBox" unique_id=429940155]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("18_5s16i")
+texture_progress = ExtResource("21_pe5li")
+texture_progress_offset = Vector2(4.865, 5.93)
+
+[node name="PlayerPanel" type="Panel" parent="." unique_id=1608384272]
+visible = false
+layout_mode = 0
+offset_left = 14.155
+offset_top = 855.385
+offset_right = 1387.31
+offset_bottom = 1067.209
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ihvq")
+
+[node name="Actions" type="Control" parent="PlayerPanel" unique_id=395816808]
+anchors_preset = 0
+offset_right = 1373.155
+offset_bottom = 211.82397
+
+[node name="Attack" type="Button" parent="PlayerPanel/Actions" unique_id=1425911288]
+layout_mode = 1
+offset_left = 202.345
+offset_top = 36.36
+offset_right = 355.34528
+offset_bottom = 98.36
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Attack"
+
+[node name="Stance" type="Button" parent="PlayerPanel/Actions" unique_id=137267757]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -374.84503
+offset_top = 32.135
+offset_right = -203.84497
+offset_bottom = 94.135086
+grow_horizontal = 0
+scale = Vector2(1.0030259, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Stance"
+
+[node name="Items" type="Button" parent="PlayerPanel/Actions" unique_id=57158694]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 206.655
+offset_top = -84.96497
+offset_right = 340.65515
+offset_bottom = -22.964966
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Items"
+
+[node name="Run" type="Button" parent="PlayerPanel/Actions" unique_id=1593799004]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.255
+offset_top = -84.46998
+offset_right = -237.25476
+offset_bottom = -22.46994
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m2as0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Run"
+
+[node name="StancePanel" type="Panel" parent="." unique_id=357677861]
+visible = false
+layout_mode = 0
+offset_left = 14.155
+offset_top = 855.385
+offset_right = 1387.31
+offset_bottom = 1067.209
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ihvq")
+
+[node name="Actions" type="Control" parent="StancePanel" unique_id=1805234080]
+anchors_preset = 0
+offset_right = 1373.155
+offset_bottom = 211.82397
+
+[node name="Fool\'s Guard" type="Button" parent="StancePanel/Actions" unique_id=1425972240]
+layout_mode = 1
+offset_left = 153.485
+offset_top = 24.955
+offset_right = 438.485
+offset_bottom = 81.955
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Fool's Guard"
+
+[node name="Roof Stance" type="Button" parent="StancePanel/Actions" unique_id=886556749]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -448.68506
+offset_top = 24.955
+offset_right = -172.68481
+offset_bottom = 81.955
+grow_horizontal = 0
+scale = Vector2(1.0030259, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Roof Stance"
+
+[node name="Plow Short" type="Button" parent="StancePanel/Actions" unique_id=1396783731]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 170.45
+offset_top = -79.96498
+offset_right = 411.45026
+offset_bottom = -22.964981
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Plow Short"
+
+[node name="Prism Stance" type="Button" parent="StancePanel/Actions" unique_id=161043666]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -456.88
+offset_top = -76.99997
+offset_right = -158.87854
+offset_bottom = -19.99997
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.001692, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m2as0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Prism Stance"
+
+[node name="Back_Stance" type="Button" parent="StancePanel/Actions" unique_id=1971941222]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1358.765
+offset_top = -58.35498
+offset_right = -1291.8782
+offset_bottom = -7.3549805
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.001692, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("19_tflw0")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m2as0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "(="
+
+[node name="AttackPanel" type="Panel" parent="." unique_id=1439990937]
+visible = false
+layout_mode = 0
+offset_left = 14.155
+offset_top = 855.385
+offset_right = 1387.31
+offset_bottom = 1067.209
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ihvq")
+
+[node name="Actions" type="Control" parent="AttackPanel" unique_id=642271724]
+anchors_preset = 0
+offset_right = 1373.155
+offset_bottom = 211.82397
+
+[node name="Attack1Button" type="Button" parent="AttackPanel/Actions" unique_id=1514333329]
+layout_mode = 1
+offset_left = 194.535
+offset_top = 22.295
+offset_right = 393.53503
+offset_bottom = 84.29504
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Attack 1"
+
+[node name="Attack2Button" type="Button" parent="AttackPanel/Actions" unique_id=505159515]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -397.44
+offset_top = 22.295
+offset_right = -198.4397
+offset_bottom = 84.295
+grow_horizontal = 0
+scale = Vector2(1.0030259, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Attack 2"
+
+[node name="Attack3Button" type="Button" parent="AttackPanel/Actions" unique_id=1140100221]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 194.535
+offset_top = -83.15997
+offset_right = 393.535
+offset_bottom = -21.159958
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68t43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Attack 3"
+
+[node name="Attack4Button" type="Button" parent="AttackPanel/Actions" unique_id=1906354433]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -397.44
+offset_top = -83.15997
+offset_right = -198.43994
+offset_bottom = -21.159973
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.001692, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("22_68t43")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m2as0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "Attack 4"
+
+[node name="Back_Attack" type="Button" parent="AttackPanel/Actions" unique_id=1966044879]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1358.765
+offset_top = -58.35498
+offset_right = -1303.5431
+offset_bottom = -7.3549805
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("19_tflw0")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m2as0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w852e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w852e")
+text = "(="
+
+[node name="Textbox" type="Panel" parent="." unique_id=2034325567]
+layout_mode = 0
+offset_left = 14.155
+offset_top = 855.385
+offset_right = 1387.31
+offset_bottom = 1067.209
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ihvq")
+
+[node name="Ticker" type="Label" parent="Textbox" unique_id=972138044]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.840088
+offset_top = -55.564972
+offset_right = -8.840088
+offset_bottom = -0.5649719
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sx2rk")
+text = ">"
+
+[node name="MarginContainer" type="MarginContainer" parent="Textbox" unique_id=1055418156]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Label" type="Label" parent="Textbox/MarginContainer" unique_id=712333334]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_rkyo3")
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sx2rk")
+text = "Motley taunts Abel...."
+
+[node name="DescriptorPanel" type="Control" parent="." unique_id=994442639]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="DescriptorPanel" unique_id=2058350298]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 23.0
+offset_right = 890.0
+offset_bottom = 403.0
+color = Color(0.5919081, 0.5291149, 0.4349251, 1)
+
+[node name="DescriptorNameLabel" type="Label" parent="DescriptorPanel" unique_id=1088598246]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 37.0
+offset_right = 730.0
+offset_bottom = 60.0
+text = "Name "
+
+[node name="DescriptorDescLabel" type="Label" parent="DescriptorPanel" unique_id=407664040]
+custom_maximum_size = Vector2(165, 300)
+layout_mode = 0
+offset_left = 638.0
+offset_top = 83.0
+offset_right = 803.0
+offset_bottom = 382.0
+text = "Description helllo"
+autowrap_mode = 2
+
+[node name="DecorativeIcon" type="Control" parent="DescriptorPanel" unique_id=1261316568]
+anchors_preset = 0
+offset_left = 638.0
+offset_top = 83.0
+offset_right = 678.0
+offset_bottom = 123.0
+
+[connection signal="pressed" from="PlayerPanel/Actions/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="PlayerPanel/Actions/Stance" to="." method="_on_stance_pressed"]
+[connection signal="pressed" from="PlayerPanel/Actions/Run" to="." method="_on_run_pressed"]
+[connection signal="mouse_entered" from="StancePanel/Actions/Fool\'s Guard" to="." method="_on_stance_button_hovered" binds= [1]]
+[connection signal="mouse_exited" from="StancePanel/Actions/Fool\'s Guard" to="." method="hide_descriptor"]
+[connection signal="pressed" from="StancePanel/Actions/Fool\'s Guard" to="." method="_on_fools_guard_pressed"]
+[connection signal="mouse_entered" from="StancePanel/Actions/Roof Stance" to="." method="_on_stance_button_hovered" binds= [3]]
+[connection signal="mouse_exited" from="StancePanel/Actions/Roof Stance" to="." method="hide_descriptor"]
+[connection signal="pressed" from="StancePanel/Actions/Roof Stance" to="." method="_on_roof_stance_pressed"]
+[connection signal="mouse_entered" from="StancePanel/Actions/Plow Short" to="." method="_on_stance_button_hovered" binds= [2]]
+[connection signal="mouse_exited" from="StancePanel/Actions/Plow Short" to="." method="hide_descriptor"]
+[connection signal="pressed" from="StancePanel/Actions/Plow Short" to="." method="_on_plow_short_pressed"]
+[connection signal="mouse_entered" from="StancePanel/Actions/Prism Stance" to="." method="_on_stance_button_hovered" binds= [4]]
+[connection signal="mouse_exited" from="StancePanel/Actions/Prism Stance" to="." method="hide_descriptor"]
+[connection signal="pressed" from="StancePanel/Actions/Prism Stance" to="." method="_on_prism_stance_pressed"]
+[connection signal="pressed" from="StancePanel/Actions/Back_Stance" to="." method="_on_back_stance_pressed"]
+[connection signal="mouse_entered" from="AttackPanel/Actions/Attack1Button" to="." method="_on_attack_button_hovered" binds= [0]]
+[connection signal="mouse_entered" from="AttackPanel/Actions/Attack2Button" to="." method="_on_attack_button_hovered" binds= [1]]
+[connection signal="mouse_entered" from="AttackPanel/Actions/Attack3Button" to="." method="_on_attack_button_hovered" binds= [2]]
+[connection signal="mouse_entered" from="AttackPanel/Actions/Attack4Button" to="." method="_on_attack_button_hovered" binds= [3]]
+[connection signal="pressed" from="AttackPanel/Actions/Back_Attack" to="." method="_on_back_attack_pressed"]

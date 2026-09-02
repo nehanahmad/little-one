@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxl6mmulyy8gg"
+path="res://.godot/imported/oskarsiljins-danger-situation-sound-effect-15635.mp3-51cd128f4a170ac876f3860e5c77a77a.mp3str"
+
+[deps]
+
+source_file="res://assets/Battle System/Music/oskarsiljins-danger-situation-sound-effect-15635.mp3"
+dest_files=["res://.godot/imported/oskarsiljins-danger-situation-sound-effect-15635.mp3-51cd128f4a170ac876f3860e5c77a77a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
