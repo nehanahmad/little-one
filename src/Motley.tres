@@ -13,6 +13,7 @@ script = ExtResource("2_s3wx7")
 enemy_name = "Motley"
 stats = SubResource("Resource_gkoue")
 possible_stances = Array[int]([1, 2])
+starting_stance = null
 battle_start_text = "Motley stares down Abel"
 idle_sprite = ExtResource("2_ty10f")
 fools_guard_sprite = ExtResource("2_ty10f")

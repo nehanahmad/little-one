@@ -76,6 +76,7 @@ texture = SubResource("CompressedTexture2D_5o88q")
 expand_mode = 1
 
 [node name="Enemy" parent="." unique_id=202543309 instance=ExtResource("3_ipplu")]
+position = Vector2(-3, -5)
 enemy_data = ExtResource("2_8t32a")
 
 [node name="battleStation" type="Sprite2D" parent="." unique_id=752307877]
