@@ -9,67 +9,111 @@
 
 ## 📁 Directory Structure
 
-```
+
+```text
 little-one/
-├── src/                          # Core game logic and scenes
-│   ├── battle.gd                 # Main battle controller script (UI, stance selection, attacks)
-│   ├── battle.tscn               # Main battle scene
-│   ├── exploration.gd            # Overworld/exploration scene manager
-│   ├── exploration.tscn          # Exploration/overworld 3D scene
-│   ├── abel.gd                   # 3D character controller (movement, animation)
-│   ├── enemy.gd                  # Enemy display/sprite controller
-│   ├── enemy.tscn                # Enemy scene
-│   ├── state.gd                  # Global state autoload (manages game state)
-│   ├── attack_data.gd            # Attack data resource class
-│   ├── stance_data.gd            # Stance data resource class
-│   ├── enemy_data.gd             # Enemy data resource class
-│   ├── abel's_appearance.gd      # Player appearance/sprite data class
-│   ├── SpriteFrames/             # Animation frame sets
-│   │   ├── Abel_Sprite_Frames.tres
-│   │   └── Motley_Sprite.tres
-│   ├── StanceData/               # Stance configuration files
-│   │   ├── idle.tres
-│   │   ├── Fool's Guard.tres
-│   │   ├── Plow Short.tres
-│   │   ├── Roof Stance.tres
-│   │   └── Prism Stance.tres
-│   ├── Abel_Appearances.tres     # Player character appearance data
-│   ├── abel_stats.tres           # Player character stats
-│   └── Motley.tres               # Enemy data for Motley (boss/enemy)
-│
-├── assets/                        # Game assets
-│   └── Battle System/
-│       ├── Fonts/                # Font files
-│       │   ├── CloisterBlack.ttf
-│       │   ├── PixelifySans-VariableFont_wght.ttf
-│       │   └── LiberationSans.ttf
-│       ├── Music/                # Audio files
+├── assets/                              # Game assets
+│   └── Battle System/                   # Assets used by the battle system
+│       ├── Fonts/                       # Fonts used throughout the game
+│       │   ├── CloisterBlack.ttf        # Gothic-style font used for UI/text
+│       │   ├── LiberationSans.ttf       # General-purpose sans-serif font
+│       │   └── PixelifySans-VariableFont_wght 1.ttf
+│       │                                    # Pixel-style font used for game UI
+│       │
+│       ├── Music/                       # Music and sound effects
 │       │   └── oskarsiljins-danger-situation-sound-effect-15635.mp3
-│       ├── UI Elements/          # UI graphics and backgrounds
-│       │   ├── BattleStation*.png         (4 versions of player stance area)
-│       │   ├── healthbar.png              (health bar UI)
-│       │   ├── healthRed.png              (health damage indicator)
-│       │   ├── staminaYellow.png          (stamina bar)
-│       │   ├── miasmaPurple.png           (miasma/status effect bar)
-│       │   ├── foolsGuard.png             (stance icon)
-│       │   ├── plowShort.png              (stance icon)
-│       │   ├── roofStance.png             (stance icon)
-│       │   ├── hearticon.png              (health indicator)
-│       │   ├── stamina.png                (stamina indicator)
-│       │   ├── Keyboard_Keys/             (WASD key imagery)
+│       │                                    # Battle danger/situation sound effect
+│       │
+│       ├── Scripts/                     # Scripts associated with battle assets
+│       │
+│       ├── UI Elements/                 # Battle UI graphics, backgrounds and effects
+│       │   ├── 514344146_655766624138525_2785643504047533295_n.jpg
+│       │   │                                # UI/reference image
 │       │   ├── 600px-Dungeon_background.png
-│       │   ├── abstract-geometric-background-shapes-texture.png
-│       │   └── [Various background/UI images]
-│       └── Units Images/          # Character sprites
-│           ├── Jevil Sprites/     (Enemy sprite frames - from Deltarune)
-│           ├── Ragnvaldr Sprites/ (Another character sprite set)
-│           ├── Uniform.png        (Alternative character art)
-│           └── [Raw sprite sheets]
+│       │   │                                # Dungeon battle background
+│       │   ├── abstract-geometric-background-shapes-texture_1194-301824.png
+│       │   │                                # Abstract background texture
+│       │   ├── BarBorder.psd             # Editable source file for bar UI
+│       │   ├── BattleStation.png         # Player battle/stance area
+│       │   ├── Battlestation2.png        # Alternate battle station design
+│       │   ├── BattleStation3.png        # Alternate battle station design
+│       │   ├── BattleStation4.png        # Alternate battle station design
+│       │   ├── foolsGuard.png            # Fool's Guard stance icon
+│       │   ├── healthbar.png             # Health bar UI element
+│       │   ├── healthRed.png             # Red health/damage indicator
+│       │   ├── heartfolklore2.png        # Decorative health-related graphic
+│       │   ├── hearticon.png             # Health icon
+│       │   ├── miasmaPurple.png          # Purple miasma/status effect bar
+│       │   ├── plowShort.png             # Plow Short stance icon
+│       │   ├── Ragnvaldr_(Player).gif    # Animated player reference/graphic
+│       │   ├── roofStance.png            # Roof Stance icon
+│       │   ├── roofStance1.png           # Alternate Roof Stance graphic
+│       │   ├── stamina.png               # Stamina indicator
+│       │   ├── staminaYellow.png         # Yellow stamina bar
+│       │   ├── wasd photo.jpg            # WASD control/reference image
+│       │   ├── WhatsApp Image 2026-01-18 at 6.15.34 PM.png
+│       │   │                                # UI/reference image
+│       │   └── Keyboard_Keys/             # Individual keyboard key graphics
+│       │       ├── A_key.png              # A key graphic
+│       │       ├── D_key.png              # D key graphic
+│       │       ├── S_key.png              # S key graphic
+│       │       └── W_key.png              # W key graphic
+│       │
+│       └── Units Images/                 # Character and enemy artwork
+│           ├── Jevil Sprites/            # Individual Jevil animation frames
+│           │   ├── frame_00_delay-0.05s.png
+│           │   ├── frame_01_delay-0.05s.png
+│           │   ├── ...
+│           │   └── frame_12_delay-0.05s.png
+│           │
+│           ├── Ragnvaldr Sprites/        # Individual Ragnvaldr animation frames
+│           │   ├── frame_0_delay-0.3s.gif
+│           │   ├── frame_0_delay-0.3s.png
+│           │   ├── frame_1_delay-0.3s.gif
+│           │   ├── frame_1_delay-0.3s.png
+│           │   └── frame_2_delay-0.3s.png
+│           │
+│           ├── Jevil Sprites.png         # Jevil sprite sheet/artwork
+│           ├── Jevil Sprites(1).png      # Alternate Jevil sprite artwork
+│           ├── PC _ Computer - Deltarune - Enemies & Bosses - Jevil.png
+│           │                                # Jevil reference artwork
+│           └── Uniform.png               # Character uniform artwork
 │
-├── CombatantStats.gd             # Base stats class for combatants
-├── project.godot                 # Godot project configuration
-├── icon.svg                       # Project icon
-└── .git/                         # Git version control
+├── src/                                  # Core game logic, scenes and data
+│   ├── Abel State Files/                 # Abel's state and appearance system
+│   │   ├── abel's_appearance.gd          # Handles Abel's appearance data
+│   │   ├── Abel_Appearances.tres         # Abel's available appearance configurations
+│   │   └── state.gd                      # Global game state management
+│   │
+│   ├── Battle System Files/              # Core battle system scripts and resources
+│   │   ├── abel_stats.tres               # Abel's combat statistics
+│   │   ├── attack_data.gd                # Attack data resource class
+│   │   ├── battle.gd                     # Main battle controller and battle logic
+│   │   ├── battle.tscn                   # Main battle scene
+│   │   ├── CombatantStats.gd             # Base statistics system for combatants
+│   │   ├── enemy.gd                      # Enemy display and behaviour controller
+│   │   ├── enemy.tscn                    # Enemy scene
+│   │   ├── enemy_data.gd                 # Enemy data resource class
+│   │   ├── Motley.tres                   # Motley enemy configuration/data
+│   │   ├── stance_data.gd                # Stance data resource class
+│   │   └── StanceData/                   # Individual stance configurations
+│   │       ├── idle.tres                 # Default/idle stance
+│   │       ├── Fool's Guard.tres         # Fool's Guard stance configuration
+│   │       ├── Plow Short.tres           # Plow Short stance configuration
+│   │       ├── Prism Stance.tres         # Prism Stance configuration
+│   │       └── Roof Stance.tres          # Roof Stance configuration
+│   │
+│   ├── SpriteFrames/                     # Sprite animation frame resources
+│   │   ├── Abel_Sprite_Frames.tres       # Abel's sprite animation frames
+│   │   └── Motley_Sprite.tres            # Motley's sprite animation frames
+│   │
+│   ├── abel.gd                            # Abel's 3D character controller
+│   ├── exploration.gd                     # Overworld/exploration scene manager
+│   └── exploration.tscn                   # Exploration/overworld 3D scene
+│
+├── project.godot                         # Godot project configuration
+├── icon.svg                              # Project icon
+└── .gitignore                            # Files and directories excluded from Git
 
 ```
 
