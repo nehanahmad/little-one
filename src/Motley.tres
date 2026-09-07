@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dyxl3rtiw0uff" path="res://src/enemy_data.gd" id="2_s3wx7"]
 [ext_resource type="SpriteFrames" uid="uid://bhg0vsc0rec70" path="res://src/SpriteFrames/Motley_Sprite.tres" id="2_ty10f"]
-[ext_resource type="Script" uid="uid://dofni6w6d5ovp" path="res://CombatantStats.gd" id="3_s3wx7"]
+[ext_resource type="Script" uid="uid://dofni6w6d5ovp" path="res://src/CombatantStats.gd" id="3_s3wx7"]
 
 [sub_resource type="Resource" id="Resource_gkoue"]
 script = ExtResource("3_s3wx7")
