@@ -261,7 +261,7 @@ Enemies are configurable data resources:
 
 Persists across scenes:
 ```gdscript
-enum Stance { IDLE, FOOLS_GUARD, PLOW_SHORT, ROOF_STANCE, PRISM_STANCE }
+enum Stance { IDLE, FOOLS_GURD, PLOW_SHORT, ROOF_STANCE, PRISM_STANCE }
 enum Limb { NONE, HEAD, HAND, LEG }
 enum StatusEffect { NONE, BLIGHT, PLAGUE, BLEED, ROT, WORMS }
 
@@ -328,19 +328,19 @@ Battle (Control)
 **UI Interaction Flow:**
 ```
 PlayerPanel (visible)
-    ↓
+	↓
 [Click Stance] → StancePanel (show)
-    ↓
+	↓
 [Select Stance] → set_stance() → update_stance_display() → StancePanel (hide) → PlayerPanel (show)
-    ↓
+	↓
 [Hover Stance] → show_descriptor() with animation
 
 PlayerPanel (visible)
-    ↓
+	↓
 [Click Attack] → populate_attack_panel() → AttackPanel (show)
-    ↓
+	↓
 [Select Attack] → [To be implemented: execute attack]
-    ↓
+	↓
 [Hover Attack] → show_descriptor() with animation
 ```
 
@@ -358,19 +358,19 @@ exploration (Node3D)
 ├── CSGBox3D - Ground plane
 │   └── [Platform/collision geometry]
 └── enemyTrigger (Area3D) - Enemy spawn trigger
-    ├── CollisionShape3D (BoxShape3D)
-    ├── Sprite3D - Visual indicator
-    └── [Connects body_entered → exploration._on_enemy_trigger_body_entered()]
+	├── CollisionShape3D (BoxShape3D)
+	├── Sprite3D - Visual indicator
+	└── [Connects body_entered → exploration._on_enemy_trigger_body_entered()]
 ```
 
 **Interaction Flow:**
 ```
 Player enters enemyTrigger collision area
-    ↓
+	↓
 _on_enemy_trigger_body_entered() checks body.name == "Abel"
-    ↓
+	↓
 get_tree().change_scene_to_file("res://src/battle.tscn")
-    ↓
+	↓
 Battle scene loads with enemy
 ```
 
@@ -640,25 +640,25 @@ These are planned or framework-only:
 
 ```
 battle.gd (main controller)
-    ├── Uses: State (global stats)
-    ├── References: EnemyData (Motley.tres)
-    ├── References: AbelAppearance (Abel_Appearances.tres)
-    ├── References: StanceData array (all stance .tres files)
-    ├── Displays: SpriteFrames (Abel & Enemy sprites)
-    └── Manages: UI panels and dialogue
+	├── Uses: State (global stats)
+	├── References: EnemyData (Motley.tres)
+	├── References: AbelAppearance (Abel_Appearances.tres)
+	├── References: StanceData array (all stance .tres files)
+	├── Displays: SpriteFrames (Abel & Enemy sprites)
+	└── Manages: UI panels and dialogue
 
 state.gd (global autoload)
-    ├── Holds: CombatantStats (abel_stats.tres)
-    ├── Holds: AbelAppearance (Abel_Appearances.tres)
-    └── Manages: Attack unlocking system
+	├── Holds: CombatantStats (abel_stats.tres)
+	├── Holds: AbelAppearance (Abel_Appearances.tres)
+	└── Manages: Attack unlocking system
 
 EnemyData (Motley.tres)
-    ├── References: CombatantStats (enemy stats)
-    ├── References: SpriteFrames (all enemy stance animations)
-    └── Used by: battle.gd and enemy.gd
+	├── References: CombatantStats (enemy stats)
+	├── References: SpriteFrames (all enemy stance animations)
+	└── Used by: battle.gd and enemy.gd
 
 CombatantStats (abel_stats.tres, Motley.tres)
-    └── Tracks: Limb damage, breaks, effective stat penalties
+	└── Tracks: Limb damage, breaks, effective stat penalties
 ```
 
 ---
@@ -752,122 +752,122 @@ To understand and extend this project:
 **Complete Call Chain from Start to Battle:**
 ```
 project.godot (main_scene = exploration.tscn)
-    ↓
+	↓
 exploration.tscn loads
-    ↓
+	↓
 exploration.gd._ready() and _process()
-    ├── abel.gd handles WASD input
-    │   ├── Input.get_vector() gets movement
-    │   ├── AnimatedSprite3D.play("walk" or "default")
-    │   └── CharacterBody3D.move_and_slide()
-    │
-    └── enemyTrigger (Area3D) monitors for collision
-        └── On collision with Abel:
-            └── exploration._on_enemy_trigger_body_entered("Abel")
-                └── get_tree().change_scene_to_file("res://src/battle.tscn")
-                    └── battle.gd._ready() executes
+	├── abel.gd handles WASD input
+	│   ├── Input.get_vector() gets movement
+	│   ├── AnimatedSprite3D.play("walk" or "default")
+	│   └── CharacterBody3D.move_and_slide()
+	│
+	└── enemyTrigger (Area3D) monitors for collision
+		└── On collision with Abel:
+			└── exploration._on_enemy_trigger_body_entered("Abel")
+				└── get_tree().change_scene_to_file("res://src/battle.tscn")
+					└── battle.gd._ready() executes
 ```
 
 **Battle Scene Setup:**
 ```
 battle.gd._ready()
-    ├── Builds stance_data_map from stance_data_list (5 stances)
-    ├── Initializes health display: set_health()
-    ├── Calls $Enemy.initialize(enemy_data)
-    │   └── enemy.gd loads sprites from EnemyData
-    ├── Hides all panels initially
-    ├── Sets player to starting stance
-    ├── Displays opening dialogue
-    └── Shows PlayerPanel
+	├── Builds stance_data_map from stance_data_list (5 stances)
+	├── Initializes health display: set_health()
+	├── Calls $Enemy.initialize(enemy_data)
+	│   └── enemy.gd loads sprites from EnemyData
+	├── Hides all panels initially
+	├── Sets player to starting stance
+	├── Displays opening dialogue
+	└── Shows PlayerPanel
 ```
 
 **UI Panel State Machine:**
 ```
 PlayerPanel (initial state)
-    ├── Click Stance Button
-    │   └── _on_stance_pressed()
-    │       ├── Release focus
-    │       ├── Hide PlayerPanel
-    │       └── Show StancePanel with 5 buttons + Back
-    │           └── On any stance click:
-    │               ├── _on_[stance]_pressed()
-    │               ├── Call set_stance()
-    │               ├── Call update_stance_display()
-    │               ├── Hide StancePanel
-    │               └── Show PlayerPanel
-    │           └── On Back click:
-    │               ├── Hide StancePanel
-    │               └── Show PlayerPanel
-    │           └── On hover:
-    │               └── _on_stance_button_hovered()
-    │                   └── show_descriptor(name, description)
-    │                       └── Tween animation: slide in from x=820
-    │
-    ├── Click Attack Button
-    │   └── _on_attack_pressed()
-    │       ├── Hide PlayerPanel
-    │       ├── Call populate_attack_panel()
-    │       │   └── Loop State.equipped_attacks
-    │       │       ├── Assign attack_name to button text
-    │       │       └── Show/hide buttons based on unlocked attacks
-    │       └── Show AttackPanel with 4 buttons + Back
-    │           └── On Back click:
-    │               ├── Hide AttackPanel
-    │               └── Show PlayerPanel
-    │           └── On hover:
-    │               └── _on_attack_button_hovered(index)
-    │                   └── show_descriptor(name, description)
-    │
-    └── Click Run Button
-        └── _on_run_pressed()
-            ├── Hide PlayerPanel
-            ├── Display "You can not run away."
-            └── Show PlayerPanel
+	├── Click Stance Button
+	│   └── _on_stance_pressed()
+	│       ├── Release focus
+	│       ├── Hide PlayerPanel
+	│       └── Show StancePanel with 5 buttons + Back
+	│           └── On any stance click:
+	│               ├── _on_[stance]_pressed()
+	│               ├── Call set_stance()
+	│               ├── Call update_stance_display()
+	│               ├── Hide StancePanel
+	│               └── Show PlayerPanel
+	│           └── On Back click:
+	│               ├── Hide StancePanel
+	│               └── Show PlayerPanel
+	│           └── On hover:
+	│               └── _on_stance_button_hovered()
+	│                   └── show_descriptor(name, description)
+	│                       └── Tween animation: slide in from x=820
+	│
+	├── Click Attack Button
+	│   └── _on_attack_pressed()
+	│       ├── Hide PlayerPanel
+	│       ├── Call populate_attack_panel()
+	│       │   └── Loop State.equipped_attacks
+	│       │       ├── Assign attack_name to button text
+	│       │       └── Show/hide buttons based on unlocked attacks
+	│       └── Show AttackPanel with 4 buttons + Back
+	│           └── On Back click:
+	│               ├── Hide AttackPanel
+	│               └── Show PlayerPanel
+	│           └── On hover:
+	│               └── _on_attack_button_hovered(index)
+	│                   └── show_descriptor(name, description)
+	│
+	└── Click Run Button
+		└── _on_run_pressed()
+			├── Hide PlayerPanel
+			├── Display "You can not run away."
+			└── Show PlayerPanel
 ```
 
 **Data References:**
 ```
 battle.gd
-    ├── @export var enemy: EnemyData → Motley.tres
-    │   ├── stats: CombatantStats
-    │   ├── idle_sprite: SpriteFrames
-    │   ├── fools_guard_sprite: SpriteFrames
-    │   ├── plow_short_sprite: SpriteFrames
-    │   ├── roof_stance_sprite: SpriteFrames
-    │   └── prism_stance_sprite: SpriteFrames
-    │
-    ├── @export var stance_data_list: Array[StanceData]
-    │   ├── idle.tres
-    │   ├── Fool's Guard.tres
-    │   ├── Plow Short.tres
-    │   ├── Roof Stance.tres
-    │   └── Prism Stance.tres
-    │
-    └── State (global)
-        ├── abel_stats: CombatantStats
-        ├── current_appearance: AbelAppearance
-        │   ├── idle_frames: SpriteFrames
-        │   ├── fools_guard_frames: SpriteFrames
-        │   ├── plow_short_frames: SpriteFrames
-        │   ├── roof_stance_frames: SpriteFrames
-        │   └── prism_stance_frames: SpriteFrames
-        ├── starting_stance: Stance (FOOLS_GUARD by default)
-        └── equipped_attacks: Array[AttackData] (currently empty, needs population)
+	├── @export var enemy: EnemyData → Motley.tres
+	│   ├── stats: CombatantStats
+	│   ├── idle_sprite: SpriteFrames
+	│   ├── fools_guard_sprite: SpriteFrames
+	│   ├── plow_short_sprite: SpriteFrames
+	│   ├── roof_stance_sprite: SpriteFrames
+	│   └── prism_stance_sprite: SpriteFrames
+	│
+	├── @export var stance_data_list: Array[StanceData]
+	│   ├── idle.tres
+	│   ├── Fool's Guard.tres
+	│   ├── Plow Short.tres
+	│   ├── Roof Stance.tres
+	│   └── Prism Stance.tres
+	│
+	└── State (global)
+		├── abel_stats: CombatantStats
+		├── current_appearance: AbelAppearance
+		│   ├── idle_frames: SpriteFrames
+		│   ├── fools_guard_frames: SpriteFrames
+		│   ├── plow_short_frames: SpriteFrames
+		│   ├── roof_stance_frames: SpriteFrames
+		│   └── prism_stance_frames: SpriteFrames
+		├── starting_stance: Stance (FOOLS_GUARD by default)
+		└── equipped_attacks: Array[AttackData] (currently empty, needs population)
 ```
 
 **Animation & Sprite Flow:**
 ```
 battle.gd.set_stance(stance)
-    ├── Matches stance enum
-    ├── Retrieves appearance.X_frames (e.g., fools_guard_frames)
-    ├── Sets $battleStation/Abel.sprite_frames = frames
-    ├── Plays "idle" animation
-    └── Calls update_stance_display()
-        ├── Gets data from stance_data_map
-        └── Updates StanceLabel & StanceIcon in MeterBox
+	├── Matches stance enum
+	├── Retrieves appearance.X_frames (e.g., fools_guard_frames)
+	├── Sets $battleStation/Abel.sprite_frames = frames
+	├── Plays "idle" animation
+	└── Calls update_stance_display()
+		├── Gets data from stance_data_map
+		└── Updates StanceLabel & StanceIcon in MeterBox
 
 enemy.gd.set_stance(stance)
-    ├── Gets sprite frames from enemy_data.get_stance_sprite()
-    ├── Sets $EnemySprite.sprite_frames = frames
-    └── Plays "idle" animation
+	├── Gets sprite frames from enemy_data.get_stance_sprite()
+	├── Sets $EnemySprite.sprite_frames = frames
+	└── Plays "idle" animation
 ```

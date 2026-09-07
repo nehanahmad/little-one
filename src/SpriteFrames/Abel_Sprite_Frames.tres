@@ -3,9 +3,59 @@
 [ext_resource type="Texture2D" uid="uid://dl24noq5q2qdi" path="res://assets/Battle System/Units Images/Ragnvaldr Sprites/frame_0_delay-0.3s.png" id="1_pj751"]
 [ext_resource type="Texture2D" uid="uid://b5i430riqu856" path="res://assets/Battle System/Units Images/Ragnvaldr Sprites/frame_1_delay-0.3s.png" id="2_d5f1f"]
 [ext_resource type="Texture2D" uid="uid://dgk7bhjhdj30i" path="res://assets/Battle System/Units Images/Ragnvaldr Sprites/frame_2_delay-0.3s.png" id="3_cv0ci"]
+[ext_resource type="Texture2D" uid="uid://dtj3e4mr4cnl" path="res://assets/Battle System/Units Images/turn-around.png" id="4_jgchq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgchq"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(678, 562, 113, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0wxj"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(791, 562, 113, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ule2p"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(904, 562, 113, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tifg3"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(1017, 562, 113, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrmge"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(0, 0, 109, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8nj6"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(109, 0, 109, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j367t"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(218, 0, 109, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w5y5"]
+atlas = ExtResource("4_jgchq")
+region = Rect2(327, 0, 109, 281)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgchq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0wxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ule2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tifg3")
+}],
+"loop": 1,
+"name": &"front_back",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_pj751")
@@ -19,4 +69,21 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrmge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8nj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j367t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w5y5")
+}],
+"loop": 1,
+"name": &"left_right",
+"speed": 5.0
 }]

@@ -22,14 +22,13 @@ fov = 76.7
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Abel" unique_id=537352418]
 billboard = 2
 sprite_frames = ExtResource("1_iq6es")
-animation = &"idle"
-frame_progress = 0.49157286
+animation = &"left_right"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Abel" unique_id=138216461]
 shape = SubResource("CapsuleShape3D_g5de8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1230682238]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6463746, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, -1.6463741, 9.536743e-07)
 use_collision = true
 size = Vector3(20, 1, 20)
 

@@ -13,14 +13,20 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		sprite.play("walk") # Replace "walk" with your actual moving animation name
-		if direction.x != 0:
-			sprite.flip_h = direction.x < 0
+		
+		# Check which axis has the stronger input
+		if abs(direction.x) > abs(direction.z):
+			# Moving left or right
+			sprite.play("left_right")
+			sprite.flip_h = direction.x > 0
+		else:
+			# Moving forward or backward
+			sprite.play("front_back")
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		sprite.play("default") # Replace with your idle animation name
+		sprite.play("idle")
 		
-
 	# Apply the movement and handle floor collisions
 	move_and_slide()
